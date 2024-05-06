@@ -4,3 +4,7 @@ export const getAllProducts = async () => {
   const data = await res.json();
   return data;
 };
+
+
+/*
+*/ 
