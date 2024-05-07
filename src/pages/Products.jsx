@@ -7,9 +7,12 @@ import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Sort from "../components/Sort";
 import FilterByPrice from "../components/FilterByPrice";
+import Search from "../components/Search";
+import { cardBtn } from "../styles/cardStyles";
+import CartSummary from "../components/CartSummary";
 
 function Products() {
-  const { products, isLoading, error, maxPrice, query } =
+  const { products, isLoading, error, maxPrice, query, cart } =
     useContext(productsContext);
 
   return (
@@ -31,18 +34,19 @@ function Products() {
               columnGap: "1em",
             }}
           >
-            <input type="search" name="" id="" placeholder="Search..." />
+            <Search />
             <Sort />
             <FilterByPrice />
           </div>
-          <button style={{ backgroundColor: '#b0f2c2', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '5px' }}> 🛒</button>
+          <CartSummary />
           
         </div>
       </Header>
       <main className="container">
         {products
           .filter(
-            (prod) => prod.price <= maxPrice && prod.title.includes(query)
+            (prod) => prod.price <= maxPrice && 
+            prod.title.toLocaleLowerCase().includes(query.toLocaleLowerCase())
           )
           .map((prod) => (
             <Product prod={prod} key={prod.id} />

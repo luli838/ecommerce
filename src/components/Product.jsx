@@ -1,4 +1,5 @@
-import React from "react";
+import { useContext } from "react";
+import { productsContext } from "../context/ProductsContext";
 import {
   card,
   cardBtn,
@@ -8,7 +9,8 @@ import {
   cardBtnDisabled,
 } from "../styles/cardStyles";
 function Product({ prod }) {
-  console.log("Datos del producto:", prod);
+  //console.log("Datos del producto:", prod);
+  const { addToCart } = useContext(productsContext);
   const multipleImages = Array.isArray(prod.images) && prod.images.length > 1;
   // Función para parsear la cadena de imagen si es necesario
   const parseImages = (images) => {
@@ -74,7 +76,7 @@ function Product({ prod }) {
         )}
         <div style={cardPriceBtn}>
           <p style={cardPrice}>${prod.price}</p>
-          <button style={cardBtn}>shop</button>
+          <button style={cardBtn} onClick={() => addToCart(prod)}>+ Cart</button>
         </div>
       </div>
       <p>{prod.description.slice(0, 40)}...</p>
