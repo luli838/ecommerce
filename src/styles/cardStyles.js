@@ -51,3 +51,22 @@ export const cardBtnDisabled = {
   fontSize: "1.1rem",
   borderRadius: "10px",
 };
+
+export const cartSummary = {
+  display: "flex",
+  alignItems: "center",
+  margin: "5px",
+};
+
+export const cardStyle = {
+  border: "1px solid #ccc",
+  borderRadius: "5px",
+  padding: "10px",
+  margin: "10px 0",
+};
+
+export const imageStyle = {
+  width: "100px", // ajusta el tamaño de la imagen según lo necesites
+  height: "100px", // ajusta el tamaño de la imagen según lo necesites
+  marginBottom: "10px",
+};

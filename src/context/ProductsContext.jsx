@@ -34,6 +34,20 @@ export const ProductsContextProvider = ({ children }) => {
     setCart(cart.filter((item) => item.id !== id));
   };
 
+  const updateCartQuantity = (productId, newQuantity, newTotalPrice) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === productId) {
+        return {
+          ...item,
+          quantity: newQuantity,
+          totalPrice: newTotalPrice,
+        };
+      }
+      return item;
+    });
+    setCart(updatedCart);
+  };
+
   const fetchData = async () => {
     try {
       setError(null);
@@ -62,6 +76,7 @@ export const ProductsContextProvider = ({ children }) => {
         query,
         addToCart,
         removeFromCart,
+        updateCartQuantity,
         handleQuery,
         handleSort,
         handleMaxPrice,

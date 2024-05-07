@@ -8,7 +8,6 @@ import Navbar from "../components/Navbar";
 import Sort from "../components/Sort";
 import FilterByPrice from "../components/FilterByPrice";
 import Search from "../components/Search";
-import { cardBtn } from "../styles/cardStyles";
 import CartSummary from "../components/CartSummary";
 
 function Products() {
