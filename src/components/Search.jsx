@@ -6,7 +6,7 @@ function Search() {
   return (
     <>
       <form>
-        <label htmlFor="searchTerm">Search</label>
+        <label htmlFor="searchTerm" >Search</label>
         <input
           type="search"
           name=""

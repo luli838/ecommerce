@@ -1,0 +1,21 @@
+.containerHome {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    gap: 1rem;
+    background-image: url('/home.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 92vh;
+    margin: 0;
+
+
+}
+
+.product {
+    /* Ajusta el tamaño del producto */
+    width: 10px; /* Ajusta el ancho del producto según sea necesario */
+    height: 30px; /* Ajusta la altura del producto según sea necesario */
+    /* Otros estilos para el producto si es necesario */
+}

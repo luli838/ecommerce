@@ -9,36 +9,16 @@ function Cart() {
   const { cart, removeFromCart,updateCartQuantity} = useContext(productsContext);
   const derivedCart = getDerivedCart(cart);
   const [productsWithImages, setProductsWithImages] = useState([]);
+  const [quantities, setQuantities] = useState({}); // Estado para las cantidades seleccionadas
+  const [totalPrices, setTotalPrices] = useState({}); // Estado para los precios totales
 
-
- /* const handleQuantityChange = (productId, newQuantity) => {
-    const productToUpdate = cartItems.find(item => item.id === productId);
-    console.table("productToUpdate: "+ productToUpdate)
-    if (productToUpdate) {
-      const newTotalPrice = productToUpdate.price * newQuantity;
-      updateCartQuantity(productId, newQuantity, newTotalPrice);
-  
-      // Actualizar el estado local del carrito con la nueva cantidad
-      const updatedCartItems = cartItems.map(item => {
-        if (item.id === productId) {
-          return { ...item, quantity: newQuantity };
-        }
-        return item;
-      });
-      console.table("updateCart: "+ updatedCartItems); // Verifica aquí si updatedCartItems es undefined o tiene algún valor
-      setCartItems(updatedCartItems);
-    }
+  // Manejar cambios en la cantidad seleccionada
+  const handleQuantityChange = (event, productId) => {
+    const newQuantity = parseInt(event.target.value); // Convertir el valor a un entero
+    const totalPrice = newQuantity * productsWithImages.find(p => p.id === productId).price; // Calcular el nuevo precio total
+    setQuantities({ ...quantities, [productId]: newQuantity }); // Actualizar el estado de las cantidades seleccionadas
+    setTotalPrices({ ...totalPrices, [productId]: totalPrice }); // Actualizar el estado de los precios totales
   };
-*/
-
-const handleQuantityChange = (productId, newQuantity) => {
-  const product = productsWithImages.find((p) => p.id === productId);
-  if (!product) {
-    return;
-  }
-  const newTotalPrice = product.price * newQuantity;
-  updateCartQuantity(productId, newQuantity, newTotalPrice);
-};
 
   useEffect(() => {
     const fetchProductsWithImages = async () => {
@@ -63,21 +43,26 @@ const handleQuantityChange = (productId, newQuantity) => {
           // Maneja el caso donde el producto no se encuentra en la lista de productos con imágenes
           return null;
         }
+        const totalPrice = totalPrices[item.id] || item.totalPrice; // Obtener el precio total actualizado si existe
         return (
         <div key={item.id} style={cardStyle}>
           <img src={product.image} alt={item.name} style={imageStyle} />
           <p>
-          {item.name} - Total: ${item.totalPrice}
+          {item.name} - Total: ${totalPrice} - Cantidad: {item.quantity}
           </p>
           <div>
-              <label htmlFor={`quantity-${item.id}`}>Quantity:</label>
-              <input
-                type="number"
-                id={'quantity-${item.id}'}
-                value={item.quantity}
-                min="1"
-                onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
-              />
+              <label htmlFor={'quantity-${item.id}'}>Quantity:</label>
+              <select
+                id={`quantity-${item.id}`}
+                value={quantities[item.id] || item.quantity} // Valor predeterminado: 1
+                onChange={(event) => handleQuantityChange(event, item.id)}
+              >
+                {[...Array(10)].map((_, index) => (
+                  <option key={index + 1} value={index + 1}>
+                    {index + 1}
+                  </option>
+                ))}
+              </select>
           
             <button style={cardBtn} onClick={() => removeFromCart(item.id)}>Remove</button>
           </div>

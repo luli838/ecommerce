@@ -5,6 +5,7 @@ function FilterByPrice() {
   const { maxPrice, handleMaxPrice } = useContext(productsContext);
   return (
     <div>
+      <p style={{ textAlign: "center" }}>Top price ${maxPrice}</p>
       <input
         style={{
           accentColor: "black",
@@ -22,7 +23,7 @@ function FilterByPrice() {
         defaultValue={1000}
         onChange={(e) => handleMaxPrice(Number(e.target.value))}
       />
-      <p style={{ textAlign: "center" }}>Top price ${maxPrice}</p>
+      
     </div>
   );
 }
