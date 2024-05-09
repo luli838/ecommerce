@@ -1,9 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { productsContext } from "../context/ProductsContext";
 import { getDerivedCart } from "../utils/getDerivedCart";
-import { Link } from "react-router-dom";
+import { NavLink, useHistory  } from "react-router-dom";
 import { cardBtn, cardStyle, imageStyle } from "../styles/cardStyles";
 import { getAllProducts } from "../services/productService";
+
+// Importa Firebase y su módulo de autenticación
+import firebase from "firebase/app";
+import "firebase/auth";
 
 function Cart() {
   const { cart, removeFromCart,updateCartQuantity} = useContext(productsContext);
@@ -11,6 +15,8 @@ function Cart() {
   const [productsWithImages, setProductsWithImages] = useState([]);
   const [quantities, setQuantities] = useState({}); // Estado para las cantidades seleccionadas
   const [totalPrices, setTotalPrices] = useState({}); // Estado para los precios totales
+  const [finalTotal, setFinalTotal] = useState(0); // Estado para el total final
+  const history = useHistory(); // Obtén el objeto de historial para redireccionar
 
   // Manejar cambios en la cantidad seleccionada
   const handleQuantityChange = (event, productId) => {
@@ -30,10 +36,31 @@ function Cart() {
       }
     
     };
-
     fetchProductsWithImages();
   }, []);
 
+  useEffect(() => {
+    // Calcular el total final
+    const total = derivedCart.reduce((acc, item) => {
+      const totalPrice = totalPrices[item.id] || item.totalPrice;
+      return acc + totalPrice;
+    }, 0);
+    setFinalTotal(total);
+  }, [derivedCart, totalPrices]);
+
+  // Función para manejar el inicio de sesión con Firebase
+  /*const handleLogin = () => {
+    const provider = new firebase.auth.GoogleAuthProvider(); // Puedes usar otro proveedor si lo prefieres
+    firebase.auth().signInWithPopup(provider)
+      .then((result) => {
+        // Si el inicio de sesión es exitoso, redirecciona a la página de compra
+        history.push("/checkout");
+      })
+      .catch((error) => {
+        console.error("Error signing in:", error);
+      });
+  };
+*/
   return (
     <article>
       {derivedCart.map((item) => {
@@ -48,7 +75,7 @@ function Cart() {
         <div key={item.id} style={cardStyle}>
           <img src={product.image} alt={item.name} style={imageStyle} />
           <p>
-          {item.name} - Total: ${totalPrice} - Cantidad: {item.quantity}
+          {item.name} - Total: ${totalPrice} 
           </p>
           <div>
               <label htmlFor={'quantity-${item.id}'}>Quantity:</label>
@@ -69,7 +96,24 @@ function Cart() {
         </div>
         );
       })}
-      <Link to={-1}>Back</Link>
+      <p>Total de compra: ${finalTotal}</p>
+      <nav>
+      <button style={{ backgroundColor: '#c5c6c8', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '5px', margin: "10px", }}>
+      <NavLink
+        to={-1}
+      >
+        Back
+      </NavLink>
+      </button>
+
+      <button style={{ backgroundColor: '#c5c6c8', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '5px', margin: "10px", }} >
+      <NavLink>
+        Buy
+      </NavLink>
+      </button>
+     
+      </nav>
+
     </article>
 
   );
