@@ -7,7 +7,40 @@ import Signup from "./Signup";
 import Cart from "./Cart";
 
 function FormLogin() {
-  const [user, setUser] = useState(null);
+/*
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      console.log('Login successful');
+    } catch (error) {
+      console.error('Error signing in:', error);
+    }
+  };
+
+  return (
+    <form onSubmit={handleLogin}>
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button type="submit">Login</button>
+    </form>
+  );
+*/
+
+ const [user, setUser] = useState(null);
   const [showLoginForm, setShowLoginForm] = useState(false); // Estado para mostrar el formulario de inicio de sesión
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -34,7 +67,7 @@ function FormLogin() {
       </header>
       {showLoginForm ? (
         console.log("Rendering LoginForm..."),
-        <div> {/* Muestra el formulario de inicio de sesión si showLoginForm es true */}
+        <div> 
           <LoginForm />
         </div>
       ) : !user ? (
@@ -50,9 +83,9 @@ function FormLogin() {
           <Signout setUser={setUser} />
         </>
       )}
-       <Cart handleBuyClick={handleBuyClick} /> 
+    
     </>
   );
-}
+ }
 
 export default FormLogin;

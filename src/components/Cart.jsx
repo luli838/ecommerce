@@ -4,17 +4,19 @@ import { getDerivedCart } from "../utils/getDerivedCart";
 import { NavLink  } from "react-router-dom";
 import { cardBtn, cardStyle, imageStyle } from "../styles/cardStyles";
 import { getAllProducts } from "../services/productService";
+import FormLogin from "./FormLogin";
 
 
-
-function Cart({handleBuyClick}) {
-  console.log("handleBuyClick prop:", handleBuyClick); 
+function Cart() {
+  
   const { cart, removeFromCart,updateCartQuantity} = useContext(productsContext);
   const derivedCart = getDerivedCart(cart);
   const [productsWithImages, setProductsWithImages] = useState([]);
   const [quantities, setQuantities] = useState({}); // Estado para las cantidades seleccionadas
   const [totalPrices, setTotalPrices] = useState({}); // Estado para los precios totales
   const [finalTotal, setFinalTotal] = useState(0); // Estado para el total final
+
+  const [showLoginForm, setShowLoginForm] = useState(false);
 
 
   // Manejar cambios en la cantidad seleccionada
@@ -93,12 +95,12 @@ function Cart({handleBuyClick}) {
       </NavLink>
       </button>
       <button style={{ backgroundColor: '#c5c6c8', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '5px', margin: "10px", }} 
-         onClick= {handleBuyClick} >
-      <NavLink to="#">
+         onClick={() => setShowLoginForm(true)} >
+      <NavLink to='/login'>
         Buy
       </NavLink>
       </button>
-     
+      {showLoginForm && <LoginForm />}
       </nav>
 
     </article>
