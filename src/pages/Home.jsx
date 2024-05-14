@@ -45,11 +45,7 @@ function Home() {
                 }}
               >             
             </div>
-              <div>
-              <CartSummary />
-              </div>
-            
-          
+            <CartSummary />
         </div>
       </Header>
       <main className="containerHome">

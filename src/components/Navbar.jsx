@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
 
+
 function Navbar() {
   return (
-    <nav
+   <nav
       style={{
         display: "flex",
         justifyContent: "center",
@@ -28,7 +29,10 @@ function Navbar() {
       </NavLink>
       </button>
     </nav>
+   
   );
+
+
 }
 
 export default Navbar;
