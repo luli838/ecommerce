@@ -4,12 +4,7 @@ import { auth } from "../firebase";
 import Register from "./Register";
 import Signout from "./Signout";
 import Signup from "./Signup";
-import Cart from "./Cart";
 
-function FormLogin() {
-/*
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
