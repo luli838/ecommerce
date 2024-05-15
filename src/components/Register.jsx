@@ -1,5 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
+import { NavLink  } from "react-router-dom";
+
 function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +34,11 @@ function Register() {
             name="password"
           />
         </label>
-        <button type="submit">Register</button>
+        <nav>
+          <NavLink>
+            <button style={{ backgroundColor: '#c5c6c8', color: 'black', border: 'none', padding: '5px 10px', borderRadius: '5px', margin: "10px", }} type="submit">Register</button>
+          </NavLink>
+        </nav>
       </form>
     </>
   );

@@ -4,36 +4,9 @@ import { auth } from "../firebase";
 import Register from "./Register";
 import Signout from "./Signout";
 import Signup from "./Signup";
+import { NavLink  } from "react-router-dom";
 
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      console.log('Login successful');
-    } catch (error) {
-      console.error('Error signing in:', error);
-    }
-  };
-
-  return (
-    <form onSubmit={handleLogin}>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Login</button>
-    </form>
-  );
-*/
+function FormLogin() {
 
  const [user, setUser] = useState(null);
   const [showLoginForm, setShowLoginForm] = useState(false); // Estado para mostrar el formulario de inicio de sesión
@@ -47,13 +20,13 @@ import Signup from "./Signup";
 
   const handleBuyClick = () => {
     setShowLoginForm(true); // Cuando se hace clic en "BUY", muestra el formulario de inicio de sesión
-    console.log("showLoginForm:", showLoginForm)
+    
   };
 
   return (
     <>
       <header>
-        <h1>Firebase Authentication</h1>
+        <h1>User Authentication</h1>
         {user ? (
           <p style={{ fontSize: "24px" }}>{user}</p>
         ) : (
@@ -61,7 +34,7 @@ import Signup from "./Signup";
         )}
       </header>
       {showLoginForm ? (
-        console.log("Rendering LoginForm..."),
+        
         <div> 
           <LoginForm />
         </div>
@@ -78,7 +51,16 @@ import Signup from "./Signup";
           <Signout setUser={setUser} />
         </>
       )}
-    
+      <nav>
+        <button style={{ backgroundColor: '#c5c6c8', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '5px', margin: "10px", }}>
+        <NavLink
+          to={-1}
+        >
+          Back
+        </NavLink>
+        </button>
+      </nav>
+   
     </>
   );
  }

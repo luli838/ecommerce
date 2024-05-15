@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { NavLink  } from "react-router-dom";
 
 function Signup({ setUser }) {
   const [error, setError] = useState(null);
@@ -36,7 +37,9 @@ function Signup({ setUser }) {
           />
         </label>
         <p style={{ color: "tomato" }}>{error}</p>
-        <button type="submit">Signup</button>
+        
+        <button style={{ backgroundColor: '#c5c6c8', color: 'black', border: 'none', padding: '5px 10px', borderRadius: '5px', margin: "10px", }} type="submit">Signup</button>
+          
       </form>
     </>
   );

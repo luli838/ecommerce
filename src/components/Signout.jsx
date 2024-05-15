@@ -9,7 +9,7 @@ function Signout({ setUser }) {
         console.error(err);
       });
   };
-  return <button onClick={signout}>Signout</button>;
+  return <button style={{ backgroundColor: '#c5c6c8', color: 'black', border: 'none', padding: '5px 10px', borderRadius: '5px', margin: "10px", }} onClick={signout}>Signout</button>;
 }
 
 export default Signout;
