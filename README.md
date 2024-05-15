@@ -11,11 +11,9 @@
 Pasos a seguir para correrlo localmente:
 
 -Clonar el projecto:
---------------------------------------------------------------------
    git clone https://github.com/luli838/ecommerce.git
-
--Ir al directorio del proyecto:
 --------------------------------------------------------------------
+-Ir al directorio del proyecto:
     cd ecommerce
 --------------------------------------------------------------------
 -Instalar dependencias:
@@ -26,3 +24,4 @@ Pasos a seguir para correrlo localmente:
 -------------------------------------------------------------------
 -Start 
     npm run dev
+-------------------------------------------------------------------
