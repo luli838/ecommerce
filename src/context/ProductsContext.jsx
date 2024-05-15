@@ -31,7 +31,14 @@ export const ProductsContextProvider = ({ children }) => {
     window.localStorage.setItem("cart", JSON.stringify(newCart));
   };
   const removeFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+    //setCart(cart.filter((item) => item.id !== id));
+    
+
+    const updatedCartItems = cart.filter((item) => item.id !== id);
+    setCart(updatedCartItems);
+    // Actualizar el almacenamiento local después de eliminar el elemento del carrito
+    localStorage.setItem('cart', JSON.stringify(updatedCartItems));
+
   };
 
   const updateCartQuantity = (productId, newQuantity, newTotalPrice) => {
