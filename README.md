@@ -8,21 +8,21 @@
 -Como funcionalidades adicionales, se implementa la capacidad de eliminar productos individualmente del carrito, así como filtros avanzados que permitirán a los usuarios ordenar y buscar productos según su precio, nombre y otros criterios específicos.
 -Para aquellos que buscan una experiencia aún más personalizada, se integra la opción de registro y inicio de sesión a través de Firebase, brindando una capa adicional de seguridad y personalización a la experiencia de compra en línea. Esto se realiza desde el boton Buy que se encuentra en el carrito.
 
+Pasos a seguir para correrlo localmente:
 
----------------------------------------------------------------------------------------
-        
-        Correrlo localmente
--Clone the project:
+-Clonar el projecto:
+--------------------------------------------------------------------
    git clone https://github.com/luli838/ecommerce.git
 
 -Ir al directorio del proyecto:
+--------------------------------------------------------------------
     cd ecommerce
-
+--------------------------------------------------------------------
 -Instalar dependencias:
     npm install
-
+-------------------------------------------------------------------
 -Instalar Firebase:
     npm install firebase
-
+-------------------------------------------------------------------
 -Start 
     npm run dev
