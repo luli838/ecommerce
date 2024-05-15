@@ -12,16 +12,15 @@ Pasos a seguir para correrlo localmente:
 
 -Clonar el projecto:
    git clone https://github.com/luli838/ecommerce.git
---------------------------------------------------------------------
+
 -Ir al directorio del proyecto:
     cd ecommerce
---------------------------------------------------------------------
+
 -Instalar dependencias:
     npm install
--------------------------------------------------------------------
+
 -Instalar Firebase:
     npm install firebase
--------------------------------------------------------------------
--Start 
+
+-Start: 
     npm run dev
--------------------------------------------------------------------
