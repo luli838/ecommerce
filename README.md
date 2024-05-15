@@ -9,3 +9,20 @@
 -Para aquellos que buscan una experiencia aún más personalizada, se integra la opción de registro y inicio de sesión a través de Firebase, brindando una capa adicional de seguridad y personalización a la experiencia de compra en línea. Esto se realiza desde el boton Buy que se encuentra en el carrito.
 
 
+---------------------------------------------------------------------------------------
+        
+        Correrlo localmente
+-Clone the project:
+   git clone https://github.com/luli838/ecommerce.git
+
+-Ir al directorio del proyecto:
+    cd ecommerce
+
+-Instalar dependencias:
+    npm install
+
+-Instalar Firebase:
+    npm install firebase
+
+-Start 
+    npm run dev

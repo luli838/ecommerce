@@ -20,12 +20,14 @@ function FormLogin() {
 
   const handleBuyClick = () => {
     setShowLoginForm(true); // Cuando se hace clic en "BUY", muestra el formulario de inicio de sesión
+    
   };
 
   return (
     <>
       <header>
         <h1>User Authentication</h1>
+      
         {user ? (
           <p style={{ fontSize: "24px" }}>{user}</p>
         ) : (
@@ -33,7 +35,7 @@ function FormLogin() {
         )}
       </header>
       {showLoginForm ? (
-
+        
         <div> 
           <LoginForm />
         </div>
@@ -50,7 +52,7 @@ function FormLogin() {
           <Signout setUser={setUser} />
         </>
       )}
-     <nav>
+      <nav>
         <button style={{ backgroundColor: '#c5c6c8', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '5px', margin: "10px", }}>
         <NavLink
           to={-1}
